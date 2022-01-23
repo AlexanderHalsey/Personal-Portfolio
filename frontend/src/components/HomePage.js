@@ -17,7 +17,9 @@ export default class HomePage extends React.Component {
 		return (
 			<Router>
 				<Routes>
-					<Route exact path="/" element={<p>Is this working?</p>} />
+					<Route exact path="/" element={
+						<p>Is this working?</p>
+					} />
 				</Routes>
 			</Router>
 		);
