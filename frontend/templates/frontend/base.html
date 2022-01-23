@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>My Personal Portfolio</title>
+		{% load static %}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+	</head>
+
+
+	<body>
+		<div id="main">
+			<div id="app">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				    <div class="container">
+				        <a class="navbar-brand" href="{% url 'home' %}">RP Portfolio</a>
+				        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				          <span class="navbar-toggler-icon"></span>
+				        </button>
+
+				        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				          <ul class="navbar-nav mr-auto">
+				            <li class="nav-item active">
+				              <a class="nav-link" href="{% url 'home' %}">HOME</a>
+				            </li>
+				            <li class="nav-item">
+				              <a class="nav-link" href="{% url 'about' %}">ABOUT</a>
+				            </li>
+				            <li class="nav-item">
+				              <a class="nav-link" href="{% url 'project_index' %}">PROJECTS</a>
+				            </li>
+				            <li class="nav-item">
+				              <a class="nav-link" href="{% url 'blog_index' %}">BLOG</a>
+				            </li>
+				            <li class="nav-item">
+				              <a class="nav-link" href="{% url 'contact' %}">CONTACT</a>
+				            </li>
+				            {% load static %}
+				            <li class="nav-item">
+				              <a class="nav-link" href="https://linkedin.com/in/alexander-halsey-10a827174/" target="blank"><img src="{% static 'img/linkedin_icon.png' %}" alt="LinkedIn Icon"></a>
+				            </li>
+				            <li class="nav-item">
+				              <a class="nav-link" href="https://github.com/halzTWiCE" target="blank"><img src="{% static 'img/github_icon.png' %}" alt="Github Icon"></a>
+				            </li>
+				            <li class="nav-item">
+				              <a class="nav-link" href="https://facebook.com/alexander.halsey1" target="blank"><img src="{% static 'img/facebook_icon.png' %}" alt="Facebook Icon" id="icon1"></a>
+				            </li>
+				          </ul>
+				        </div>
+				    </div>
+
+				</nav>
+				
+				<div class="container">
+		    		{% block page_content %}{% endblock %}
+				</div>
+
+				<footer>
+					<h3>Contact</h3>
+					<p>Email Address, Phone number, Facebook, LinkedIn</p>
+					<h3><strong>Footer</strong></h3>
+					<ul>
+						<li>CV</li>
+						<li>GitHub Account</li>
+						<li>Linkedin Profile</li>
+					</ul>
+				</footer>
+			</div>
+		</div>
+		<script src="{% static 'frontend/main.js' %}"></script>
+	</body>
+</html>
