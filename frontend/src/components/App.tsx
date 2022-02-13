@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { render } from "react-dom";
 import HomePage from './HomePage';
 
 
-export default class App extends Component {
-	constructor(props) {
+export default class App extends React.Component {
+	constructor(props: any) {
 		super(props);
 	}
 
