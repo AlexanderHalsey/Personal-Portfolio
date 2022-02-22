@@ -1,19 +1,34 @@
 import * as React from "react";
-import { render } from "react-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
+import NavBar from './Navbar'; 
 import HomePage from './HomePage';
+import AboutMe from './AboutMe';
+import Projects from './Projects';
+import Blog from './Blog';
 
 
-export default class App extends React.Component {
-	constructor(props: any) {
-		super(props);
-	}
-
-	render() {
-		return <div>
-			<HomePage />
-		</div>
-	}
+const App = () => {
+	return (
+	  <Router>
+        <Routes>
+          <Route path="/" element={<NavBar />}>
+            <Route index element={<HomePage />} />
+            <Route path="about_me" element={<AboutMe />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="*" element={
+            	<div>Error 404 - Oops! Page not found.</div>
+            } />
+          </Route>
+        </Routes>
+      </Router>
+	);
 }
 
-const appDiv = document.getElementById('app');
-render(<App />, appDiv);
+export default App;

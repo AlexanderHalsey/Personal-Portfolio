@@ -1,40 +1,37 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: "./src/index.ts",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "./static/frontend"),
-    filename: "[name].js",
+    filename: "[name].js"
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: "/node_modules/"
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: "babel-loader",
+        exclude: "/node_modules/"
       },
     ],
   },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
   optimization: {
-    minimize: true,
+    minimize: true
   },
   plugins: [
-    new webpack.DefinePlugin({
-      "process.env": {
-        // This has effect on the react lib size
-        NODE_ENV: JSON.stringify("production"),
-      },
+    new webpack.ProgressPlugin(),
+    new HtmlWebpackPlugin({
+      template: './templates/frontend/base.html'
     }),
-  ],
+  ]
 };
