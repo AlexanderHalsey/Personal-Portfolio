@@ -10,7 +10,7 @@ import NavBar from './Navbar';
 import HomePage from './HomePage';
 import AboutMe from './AboutMe';
 import Projects from './Projects';
-import Blog from './Blog';
+import Skills from './Skills';
 
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
             <Route index element={<HomePage />} />
             <Route path="about_me" element={<AboutMe />} />
             <Route path="projects" element={<Projects />} />
-            <Route path="blog" element={<Blog />} />
+            <Route path="skills" element={<Skills />} />
             <Route path="*" element={
             	<div>Error 404 - Oops! Page not found.</div>
             } />

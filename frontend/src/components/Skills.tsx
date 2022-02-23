@@ -2,12 +2,12 @@ import * as React from 'react';
 import NavBar from './Navbar'; 
 
 
-const Blog = () => {
+const Skills = () => {
     return (
         <div>
-            Blog Index
+            Skills
         </div>
     );
 }
 
-export default Blog;
+export default Skills;

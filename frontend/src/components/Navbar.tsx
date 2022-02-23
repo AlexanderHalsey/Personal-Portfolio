@@ -23,12 +23,12 @@ import MailIcon from '@mui/icons-material/Mail';
 import PhoneIcon from '@mui/icons-material/Phone';
 
 
-const pages: string[] = ['About Me', 'Projects', 'Blog'];
-const links: [ string, SvgIconProps ][] = [
-  ['linkedin', <LinkedInIcon />], 
-  ['gihub', <GitHubIcon />],
-  ['email',  <MailIcon />],
-  ['phone', <PhoneIcon />],
+const pages: string[] = ['Projects', 'About Me', 'Skills'];
+const links: [ string, string, SvgIconProps ][] = [
+  ['linkedin', 'https://www.linkedin.com/in/alexander-halsey-10a827174/', <LinkedInIcon />], 
+  ['gihub', 'https://github.com/AlexanderHalsey', <GitHubIcon />],
+  ['email', '',  <MailIcon />],
+  ['phone', '', <PhoneIcon />],
 ];
 
 interface ScrollProps {
@@ -59,7 +59,7 @@ const NavBar = () => {
   return (
     <div>
       <HideOnScroll>
-        <AppBar position="relative">
+        <AppBar position="sticky">
           <Container maxWidth="lg">
             <Toolbar disableGutters>
               <Link to='/'>
@@ -111,7 +111,10 @@ const NavBar = () => {
               <Box sx={{ justifyContent: 'flex-end', flexGrow: 1, 
                          display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
-                  <Link to={"/" + page.toLowerCase().replace(" ", "_")} key={page}>
+                  <Link 
+                    to={"/" + page.toLowerCase().replace(" ", "_")} 
+                    key={page}
+                  >
                     <Button
                       onClick={handleCloseNavMenu}
                       sx={{ mx: 5, my: 2, color: 'white', display: 'block'}}
@@ -120,12 +123,16 @@ const NavBar = () => {
                     </Button>
                   </Link>
                 ))}
-                {links.map(([link, icon]) => (
-                  <Link to={"/" + link} key={link}>
-                    <IconButton aria-label={link}>
+                {links.map(([key, link, icon]) => (
+                  <a 
+                    target="_blank"
+                    href={link}
+                    rel="noopener noreferrer"
+                  >
+                    <IconButton aria-label={key}>
                       {icon}
                     </IconButton>
-                  </Link>
+                  </a>
                 ))}
               </Box>
             </Toolbar>
