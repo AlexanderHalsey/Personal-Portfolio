@@ -31,22 +31,24 @@ const links: [ string, string, SvgIconProps ][] = [
   ['phone', '', <PhoneIcon />],
 ];
 
+
 interface Props {
   children: React.ReactElement
 }
 
+
 function CustomScroll(props: Props) {
-  const trigger = useScrollTrigger({
+  const elevationTrigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
   });
+  const hideOnTrigger = useScrollTrigger();
 
   return React.cloneElement(
-    (<Slide appear={false} direction="down" in={!trigger}>
+    <Slide appear={false} direction="down" in={!hideOnTrigger}>
       {props.children}
-    </Slide>),
-    props.children, {
-    elevation: trigger ? 4 : 0,
+    </Slide>, {
+    elevation: elevationTrigger ? 4 : 0,
   });
 }
 
@@ -130,7 +132,8 @@ const NavBar = () => {
                   </Link>
                 ))}
                 {links.map(([key, link, icon]) => (
-                  <a 
+                  <a
+                    key={key} 
                     target="_blank"
                     href={link}
                     rel="noopener noreferrer"
