@@ -31,19 +31,25 @@ const links: [ string, string, SvgIconProps ][] = [
   ['phone', '', <PhoneIcon />],
 ];
 
-interface ScrollProps {
+interface Props {
   children: React.ReactElement
 }
 
-function HideOnScroll(props: ScrollProps) {
-  const trigger = useScrollTrigger();
+function CustomScroll(props: Props) {
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
 
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
+  return React.cloneElement(
+    (<Slide appear={false} direction="down" in={!trigger}>
       {props.children}
-    </Slide>
-  );
+    </Slide>),
+    props.children, {
+    elevation: trigger ? 4 : 0,
+  });
 }
+
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -58,9 +64,9 @@ const NavBar = () => {
 
   return (
     <div>
-      <HideOnScroll>
-        <AppBar position="sticky">
-          <Container maxWidth="lg">
+      <CustomScroll>
+        <AppBar position="sticky" sx={{ backgroundColor: '#0e274d' }}>
+          <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Link to='/'>
                 <Button
@@ -138,7 +144,7 @@ const NavBar = () => {
             </Toolbar>
           </Container>
         </AppBar>
-      </HideOnScroll>
+      </CustomScroll>
 
       <Outlet />
     </div>

@@ -19,10 +19,22 @@ html, body {
 	height: 100%;
 }
 
+.homepage {
+	background-color: black;
+}
+
 .introMain {
-	
+	min-height: 640px;
+	background-image: linear-gradient(
+		rgba(14, 39, 77, 1), black
+	);
 }
 
 #coverPhoto {
+	display: block;
+	max-width: 85%;
+	height: auto;
 	border-radius:  50%;
+    margin-left: auto;
+    margin-right: auto;
 }
