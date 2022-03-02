@@ -1,6 +1,6 @@
 # screen sizes to use 
 screen_sizes = {
-    "xl": (1536, 639)
+    "xl": (1416, 620)
 }
 
 
@@ -17,11 +17,6 @@ stars = {
     'size': (10, 20),
 }
 
-planets = {
-    'total': 6,
-    'size': (50, 80),
-}
-
 sun = {
     'name': 'sun',
     'size': 100,
@@ -32,21 +27,21 @@ sun = {
 ufo = {
     'name': 'ufo',
     'size': 50,
-    'position': (850, 20),
+    'position': (850, 40),
     'orientation': None,
 }
 
 rocket_ship = {
     'name': 'rocket_ship',
     'size': 130,
-    'position': (600, 500),
+    'position': (850, 460),
     'orientation': None,
 }
 
 galaxy = {
     'name': 'galaxy',
     'size': 100,
-    'position': (850, 520),
+    'position': (1225, 500),
     'orientation': None,
 }
 
@@ -60,32 +55,62 @@ meteors = {
 astronaut = {
     'name': 'astronaut',
     'size': 120,
-    'position': (500, 200),
+    'position': (700, 200),
     'orientation': None,
 }
 
 alien = {
     'name': 'alien',
     'size': 80,
-    'position': (30, 500),
+    'position': (30, 450),
     'orientation': None,
 }
 
 earth = {   
     'name': 'earth',
     'size': 80,
-    'position': (620, 200),
+    'position': (850, 250),
     'orientation': None,
 }
 
+mars = {   
+    'name': 'mars',
+    'size': 60,
+    'position': (650, 40),
+    'orientation': None,
+}
 
-# coordinate ranges not to be used for planet generations
-out_of_bounds = []
+mercury = {   
+    'name': 'mercury',
+    'size': 45,
+    'position': (1170, 200),
+    'orientation': None,
+}
 
-for element in [sun, ufo, rocket_ship, galaxy, astronaut, 
-                alien, earth]:
-    pw, ph = element["position"][0], element["position"][1]
-    s = element["size"]
-    out_of_bounds.append((
-        (pw, ph), (pw + s, ph + s)
-    ))
+neptune = {   
+    'name': 'neptune',
+    'size': 70,
+    'position': (170, 270),
+    'orientation': None,
+}
+
+saturn = {   
+    'name': 'saturn',
+    'size': 70,
+    'position': (1200, 30),
+    'orientation': None,
+}
+
+uranus = {   
+    'name': 'uranus',
+    'size': 50,
+    'position': (550, 360),
+    'orientation': None,
+}
+
+venus = {   
+    'name': 'venus',
+    'size': 100,
+    'position': (300, 470),
+    'orientation': None,
+}

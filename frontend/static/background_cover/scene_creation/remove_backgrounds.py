@@ -14,7 +14,7 @@ EXTENSIONS = [".jpg", ".jpeg", ".png"]
 white_background = [
     'earth.', 'meteor.', 'mars_2', 'neptune.', 'neptune_2',
     'neptune_3', 'saturn_2', 'saturn_3', 'uranus_2', 
-    'rocket_ship.', 'rocket_ship_3'
+    'rocket_ship.', 'rocket_ship_3',
 ]
 black_background = ['mercury.']
 
@@ -39,6 +39,9 @@ for file in BASE_DIR.glob('**/*'):
                 new_data = []
                 for r,g,b,a in image.getdata():
                     if r > 250 and g > 250 and b > 250 and a > 250:
+                        new_data.append((0,0,0,0))
+                    elif key_phrase == "rocket_ship." and r == 238 and \
+                      g == 238 and b == 238:
                         new_data.append((0,0,0,0))
                     else:
                         new_data.append((r,g,b,a))
