@@ -67,7 +67,7 @@ const NavBar = () => {
   return (
     <div>
       <CustomScroll>
-        <AppBar position="sticky" sx={{ backgroundColor: '#0e274d' }}>
+        <AppBar position="fixed" sx={{ backgroundColor: 'transparent' }}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Link to='/'>
