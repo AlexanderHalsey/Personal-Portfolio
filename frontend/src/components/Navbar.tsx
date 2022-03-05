@@ -24,11 +24,12 @@ import PhoneIcon from '@mui/icons-material/Phone';
 
 
 const pages: string[] = ['Projects', 'About Me', 'Skills'];
-const links: [ string, string, SvgIconProps ][] = [
-  ['linkedin', 'https://www.linkedin.com/in/alexander-halsey-10a827174/', <LinkedInIcon />], 
-  ['gihub', 'https://github.com/AlexanderHalsey', <GitHubIcon />],
-  ['email', '',  <MailIcon />],
-  ['phone', '', <PhoneIcon />],
+const links: [ string, string, SvgIconProps, string ][] = [
+  ['linkedin', 'https://www.linkedin.com/in/alexander-halsey-10a827174/', 
+   <LinkedInIcon />, 'blue'], 
+  ['gihub', 'https://github.com/AlexanderHalsey', <GitHubIcon />, 'gray'],
+  ['email', '',  <MailIcon />, 'yellow'],
+  ['phone', '', <PhoneIcon />, 'green'],
 ];
 
 
@@ -54,7 +55,8 @@ function CustomScroll(props: Props) {
 
 
 const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElNav, setAnchorElNav] = 
+    React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -67,13 +69,21 @@ const NavBar = () => {
   return (
     <div>
       <CustomScroll>
-        <AppBar position="fixed" sx={{ backgroundColor: 'transparent' }}>
+        <AppBar 
+          position="fixed" 
+          sx={{ backgroundColor: 'transparent' }}
+        >
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <Link to='/'>
+              <Link to='/' style={{ textDecoration: 'none' }}>
                 <Button
                   key='Home'
-                  sx={{ mx: 3, my: 2, color: 'white', display: 'block' }}
+                  sx={{ mx: 3, my: 2, display: 'block', 
+                    color: 'white', fontSize: 18, '&:hover': { 
+                      backgroundColor: 'transparent',
+                      color: 'purple'
+                    } 
+                  }}
                 >
                   Home
                 </Button>
@@ -109,8 +119,13 @@ const NavBar = () => {
                   }}
                 >
                   {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
+                    <MenuItem 
+                      key={page} 
+                      onClick={handleCloseNavMenu}
+                    >
+                      <Typography textAlign="center">
+                        {page}
+                      </Typography>
                     </MenuItem>
                   ))}
                 </Menu>
@@ -121,24 +136,39 @@ const NavBar = () => {
                 {pages.map((page) => (
                   <Link 
                     to={"/" + page.toLowerCase().replace(" ", "_")} 
+                    style={{ textDecoration: 'none' }}
                     key={page}
                   >
                     <Button
                       onClick={handleCloseNavMenu}
-                      sx={{ mx: 5, my: 2, color: 'white', display: 'block'}}
+                      sx={{ 
+                        mx: 5, my: 2, color: 'white', display: 'block', 
+                        fontSize: 18, '&:hover': { 
+                          backgroundColor: 'transparent',
+                          color: 'purple'
+                        } 
+                      }}
                     >
                       {page}
                     </Button>
                   </Link>
                 ))}
-                {links.map(([key, link, icon]) => (
+                {links.map(([key, link, icon, hoverColor]) => (
                   <a
                     key={key} 
                     target="_blank"
                     href={link}
                     rel="noopener noreferrer"
                   >
-                    <IconButton aria-label={key}>
+                    <IconButton 
+                      sx={{ paddingTop: 3, color: 'white', 
+                        '&:hover': { 
+                          backgroundColor: 'transparent',
+                          color: hoverColor
+                        } 
+                      }}
+                      aria-label={key}
+                    >
                       {icon}
                     </IconButton>
                   </a>

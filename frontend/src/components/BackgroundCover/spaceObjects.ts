@@ -30,10 +30,10 @@ const starType = (name: string, total: number, rotation_step: number,
         stars.push({
             id: name + i,
             coords: [
-                // values set at max 98 percent so that star width
-                // is accomodated in frame
-                Math.floor(Math.random() * 99),
-                Math.floor(Math.random() * 99),
+                // values set at max 97 percent so that star width
+                // and star height is accomodated in frame
+                Math.floor(Math.random() * 97)+1,
+                Math.floor(Math.random() * 97)+1,
             ],
             width: Math.floor(Math.random() * (sizeRange[1] - 
                 sizeRange[0]) + sizeRange[0]),
@@ -53,7 +53,7 @@ const starType = (name: string, total: number, rotation_step: number,
 }
 
 // stars to be generated randomly on page
-const starType1: Star = starType("starType1", 216, 10, [5, 10], 
+const starType1: Star = starType("starType1", 120, 10, [5, 10], 
     ["star_11.png", "star_3.png", "star_7.png", "star_5.png", 
      "star_3.png", "star_15.png"])
 
@@ -76,7 +76,7 @@ type FixedObject = {
     name: string,
     size: number,
     coords: [number, number],
-    orientation: number | null,
+    orientation: number,
     file: string
 };
 
@@ -100,7 +100,7 @@ const ufo: FixedObject = fixedObject("ufo", 50, [62, 6], 0,
                                      "ufo/ufo.png");
 
 const rocket_ship: FixedObject = fixedObject("rocket_ship", 130,
-                                             [67, 71], 315,
+                                             [67, 71], 45,
                                              "rocket_ship/rocket_ship.png");
 
 const galaxy: FixedObject = fixedObject("galaxy", 100, [89, 78],
@@ -109,14 +109,8 @@ const galaxy: FixedObject = fixedObject("galaxy", 100, [89, 78],
 const meteors: FixedObject = fixedObject("meteors", 100, [1, 31], 0,
                                          "meteors/meteor.png");
 
-const astronaut: FixedObject = fixedObject("astronaut",120, [51, 31],
-                                           0, "astronaut/astronaut.png");
-
-const alien: FixedObject = fixedObject("alien", 150, [-4, 70], 270, 
+const alien: FixedObject = fixedObject("alien", 150, [-4, 70], 90, 
                                        "alien/alien.png");
-
-const earth: FixedObject = fixedObject("earth", 80, [62, 39], 0,
-                                       "earth/earth.png");
 
 const mars: FixedObject = fixedObject("mars", 60, [47, 6], 0,
                                       "planets/mars.png");
@@ -137,7 +131,36 @@ const venus: FixedObject = fixedObject("venus", 85, [21, 73], 0,
                                        "planets/venus.png");
 
 export const fixedObjects: Array<FixedObject> = [
-   sun, ufo, rocket_ship, galaxy, meteors, astronaut,
-   alien, earth, mars, mercury, neptune, saturn, 
-   uranus, venus  
+   sun, ufo, rocket_ship, galaxy, meteors, alien, mars, mercury, 
+   neptune, saturn, uranus, venus  
+]
+
+
+// fluid objects that move with screen size
+interface FluidObject extends FixedObject {
+    minWidthCoords: [number, number]
+}
+
+const fluidObject = (name: string, size: number, 
+    maxWidthCoords: [number, number], minWidthCoords: [number, number], 
+    orientation: number, file: string): FluidObject => {
+    return ({
+       name: name,
+       size: size,
+       coords: maxWidthCoords,
+       minWidthCoords: minWidthCoords,
+       orientation: orientation,
+       file: BASE_DIR + file 
+    });
+}
+
+const astronaut: FluidObject = fluidObject("astronaut", 120, [51, 34], 
+                                           [13, 46], 0, 
+                                           "astronaut/astronaut.png", );
+
+const earth: FluidObject = fluidObject("earth", 80, [62, 41], [44, 53],
+                                       0, "earth/earth.png");
+
+export const fluidObjects: Array<FluidObject> = [
+    astronaut, earth
 ]

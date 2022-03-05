@@ -19,26 +19,16 @@ html, body {
 }
 
 .homepage {
-	position: relative;
 	background-color: black;
 }
 
 .introMain {
 	margin: 0px;
-	min-height: 600px;
+	height: auto;
 	color: white;
 	background-image: linear-gradient(rgba(14, 39, 77, 1), black);
 }
 
-.titleName {
-	position: absolute;
-	left: 28%;
-	top: 27%;
-
-}
-
-.titlePosition {
-	position: absolute;
-	left:  28%;
-	top: 40%;
+.backgroundCover {
+	position: relative;
 }
