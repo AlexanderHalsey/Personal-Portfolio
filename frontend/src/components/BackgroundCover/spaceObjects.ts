@@ -138,16 +138,19 @@ export const fixedObjects: Array<FixedObject> = [
 
 // fluid objects that move with screen size
 interface FluidObject extends FixedObject {
+    midWidthCoords: [number, number],
     minWidthCoords: [number, number]
 }
 
 const fluidObject = (name: string, size: number, 
-    maxWidthCoords: [number, number], minWidthCoords: [number, number], 
-    orientation: number, file: string): FluidObject => {
+  maxWidthCoords: [number, number], midWidthCoords: [number, number], 
+  minWidthCoords: [number, number], orientation: number, file: string): 
+  FluidObject => {
     return ({
        name: name,
        size: size,
        coords: maxWidthCoords,
+       midWidthCoords: midWidthCoords,
        minWidthCoords: minWidthCoords,
        orientation: orientation,
        file: BASE_DIR + file 
@@ -155,11 +158,11 @@ const fluidObject = (name: string, size: number,
 }
 
 const astronaut: FluidObject = fluidObject("astronaut", 120, [51, 34], 
-                                           [13, 46], 0, 
+                                           [45, 51], [13, 48], 0, 
                                            "astronaut/astronaut.png", );
 
-const earth: FluidObject = fluidObject("earth", 80, [62, 41], [44, 53],
-                                       0, "earth/earth.png");
+const earth: FluidObject = fluidObject("earth", 80, [62, 41], [61, 58],
+                                       [43, 55], 0, "earth/earth.png");
 
 export const fluidObjects: Array<FluidObject> = [
     astronaut, earth
