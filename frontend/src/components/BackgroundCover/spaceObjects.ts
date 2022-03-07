@@ -99,14 +99,13 @@ const sun: FixedObject = fixedObject("sun", 100, [5, 7], 0,
 const ufo: FixedObject = fixedObject("ufo", 50, [62, 6], 0,
                                      "ufo/ufo.png");
 
-const rocket_ship: FixedObject = fixedObject("rocket_ship", 130,
-                                             [67, 71], 45,
-                                             "rocket_ship/rocket_ship.png");
+export const rocketShip: FixedObject = fixedObject("rocket_ship", 130,
+                            [53, 100], 45, "rocket_ship/rocket_ship.png");
 
 const galaxy: FixedObject = fixedObject("galaxy", 100, [89, 78],
                                         0, "galaxy/galaxy.png");
 
-const meteors: FixedObject = fixedObject("meteors", 100, [1, 31], 0,
+export const meteor: FixedObject = fixedObject("meteors", 20, [-10, 11], 200,
                                          "meteors/meteor.png");
 
 const alien: FixedObject = fixedObject("alien", 150, [-4, 70], 90, 
@@ -131,10 +130,9 @@ const venus: FixedObject = fixedObject("venus", 85, [21, 73], 0,
                                        "planets/venus.png");
 
 export const fixedObjects: Array<FixedObject> = [
-   sun, ufo, rocket_ship, galaxy, meteors, alien, mars, mercury, 
+   sun, ufo, galaxy, alien, mars, mercury, 
    neptune, saturn, uranus, venus  
 ]
-
 
 // fluid objects that move with screen size
 interface FluidObject extends FixedObject {
@@ -157,11 +155,11 @@ const fluidObject = (name: string, size: number,
     });
 }
 
-const astronaut: FluidObject = fluidObject("astronaut", 120, [51, 34], 
-                                           [45, 51], [13, 48], 0, 
+const astronaut: FluidObject = fluidObject("astronaut", 140, [49, 34], 
+                                           [39, 51], [9, 48], 0, 
                                            "astronaut/astronaut.png", );
 
-const earth: FluidObject = fluidObject("earth", 80, [62, 41], [61, 58],
+const earth: FluidObject = fluidObject("earth", 100, [62, 41], [61, 58],
                                        [43, 55], 0, "earth/earth.png");
 
 export const fluidObjects: Array<FluidObject> = [

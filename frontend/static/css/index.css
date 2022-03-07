@@ -27,6 +27,7 @@ html, body {
 	height: auto;
 	color: white;
 	background-image: linear-gradient(rgba(14, 39, 77, 1), black);
+	overflow: hidden;
 }
 
 .backgroundCover {

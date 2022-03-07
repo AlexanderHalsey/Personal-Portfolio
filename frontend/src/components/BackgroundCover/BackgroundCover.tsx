@@ -9,16 +9,17 @@ import {
 
 import useWindowDimensions from './useWindowDimensions';
 import fluidPosition from './utils';
+import RocketShip from './RocketShip';
+import Meteors from './Meteors';
 
 
 const BackgroundCover = () => {
-  // th
   const { width, height } = useWindowDimensions();
-
   const [ titleNameWidth, titleNameHeight ] = fluidPosition(
     [25, 39], [20, 23], [25, 12], width);
   const [ titleDescWidth, titleDescHeight ] = fluidPosition(
     [25, 50], [20, 34], [25, 22], width);
+
 
   return (
     <div 
@@ -84,7 +85,8 @@ const BackgroundCover = () => {
           />
         )
       })}
-
+      <RocketShip />
+      <Meteors />
       <h1 
         className="titleName"
         style={{
@@ -95,7 +97,7 @@ const BackgroundCover = () => {
       >
         I'm Alex Halsey
       </h1>
-       <h3 
+      <h3 
         className="titlePosition"
         style={{
           position: "absolute",
@@ -105,7 +107,6 @@ const BackgroundCover = () => {
       >
         A Junior Web Developper
       </h3>
-
     </div>
   )
 }
