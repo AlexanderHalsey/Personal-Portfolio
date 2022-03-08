@@ -4,13 +4,14 @@ import * as ReactDOM from 'react-dom';
 import { 
     stars,
     fixedObjects,
-    fluidObjects,
+    earth,
 } from './spaceObjects';
 
 import useWindowDimensions from './useWindowDimensions';
 import fluidPosition from './utils';
 import RocketShip from './RocketShip';
 import Meteors from './Meteors';
+import Astronaut from './Astronaut';
 
 
 const BackgroundCover = () => {
@@ -19,6 +20,8 @@ const BackgroundCover = () => {
     [25, 39], [20, 23], [25, 12], width);
   const [ titleDescWidth, titleDescHeight ] = fluidPosition(
     [25, 50], [20, 34], [25, 22], width);
+  const [ earthWidth, earthHeight ] = fluidPosition(earth.coords, 
+    earth.midWidthCoords, earth.minWidthCoords, width);
 
 
   return (
@@ -39,9 +42,9 @@ const BackgroundCover = () => {
                   src={star.file}
                   style={{
                     position: 'absolute',
-                    width: Math.floor(star.width * width / 1366), 
+                    width: Math.floor(star.width * width / 1400), 
                     left: star.coords[0].toString() + "%", 
-                    top: Math.floor(star.coords[1] / 100 * (625-75)), 
+                    top: star.coords[1].toString() + "%", 
                     transform: 'rotate(' + star.orientation + 
                       'deg) scaleX(' + star.mirror +')',
                   }}
@@ -58,41 +61,38 @@ const BackgroundCover = () => {
             key={obj.name}
             src={obj.file}
             style={{
-              width: Math.floor(obj.size * width / 1366),
+              width: obj.size.toString() + "%",
               position: 'absolute',
               left: obj.coords[0].toString() + "%",
-              top: Math.floor(obj.coords[1] / 100 * (625-75)),
+              top: obj.coords[1].toString() + "%",
               transform: 'rotate(' + obj.orientation + 'deg)',
             }}
           />
         )
       })}
 
-      {fluidObjects.map((obj) => {
-        const [ w, h ] = fluidPosition(obj.coords, 
-            obj.midWidthCoords, obj.minWidthCoords, width);
-        return (
-          <img 
-            key={obj.name}
-            src={obj.file}
-            style={{
-              width: obj.size,
-              position: 'absolute',
-              left: w.toString() + "%",
-              top: Math.floor(h / 100 * (625-75)),
-              transform: 'rotate(' + obj.orientation + 'deg)',
-            }}
-          />
-        )
-      })}
+      <img 
+        key={earth.name}
+        src={earth.file}
+        style={{
+          width: earth.size,
+          position: 'absolute',
+          left: earthWidth.toString() + "%",
+          top: earthHeight.toString() + "%",
+          transform: 'rotate(' + earth.orientation + 'deg)',
+        }}
+      />
+
       <RocketShip />
       <Meteors />
+      <Astronaut />
+
       <h1 
         className="titleName"
         style={{
           position: "absolute",
           left: titleNameWidth.toString() + "%",
-          top: Math.floor(titleNameHeight / 100 * (625-75)),
+          top: titleNameHeight.toString() + "%",
         }}
       >
         I'm Alex Halsey
@@ -102,7 +102,7 @@ const BackgroundCover = () => {
         style={{
           position: "absolute",
           left: titleDescWidth.toString() + "%",
-          top: Math.floor(titleDescHeight / 100 * (625-75)),
+          top: titleDescHeight.toString() + "%",
         }}
       >
         A Junior Web Developper

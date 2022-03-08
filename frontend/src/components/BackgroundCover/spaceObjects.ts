@@ -53,14 +53,14 @@ const starType = (name: string, total: number, rotation_step: number,
 }
 
 // stars to be generated randomly on page
-const starType1: Star = starType("starType1", 120, 10, [5, 10], 
+const starType1: Star = starType("starType1", 120, 10, [6, 11], 
     ["star_11.png", "star_3.png", "star_7.png", "star_5.png", 
      "star_3.png", "star_15.png"])
 
-const starType2: Star = starType("starType2", 4, 180, [30, 35],
+const starType2: Star = starType("starType2", 4, 180, [25, 35],
     ["star_12.png", "star_13.png", "star_14.png", "star_16.png"]) 
 
-const starType3: Star = starType("starType3", 16, 10, [15, 20],
+const starType3: Star = starType("starType3", 16, 10, [11, 16],
     ["star_18.png", "star_19.png", "star_20.png", "star_10.png",
      "star_21.png", "star_9.png", "star_17.png", "star_8.png" ])
 
@@ -93,40 +93,40 @@ const fixedObject = (name: string, size: number, coords:
     })
 }
 
-const sun: FixedObject = fixedObject("sun", 100, [5, 7], 0, 
+const sun: FixedObject = fixedObject("sun", 7, [5, 7], 0, 
                                      "sun/sun.png");
 
-const ufo: FixedObject = fixedObject("ufo", 50, [62, 6], 0,
+const ufo: FixedObject = fixedObject("ufo", 3, [62, 6], 0,
                                      "ufo/ufo.png");
 
-export const rocketShip: FixedObject = fixedObject("rocket_ship", 130,
+export const rocketShip: FixedObject = fixedObject("rocket_ship", 9,
                             [53, 100], 45, "rocket_ship/rocket_ship.png");
 
-const galaxy: FixedObject = fixedObject("galaxy", 100, [89, 78],
+const galaxy: FixedObject = fixedObject("galaxy", 9, [89, 71],
                                         0, "galaxy/galaxy.png");
 
-export const meteor: FixedObject = fixedObject("meteors", 20, [-10, 11], 200,
+export const meteor: FixedObject = fixedObject("meteors", 1, [-10, 11], 210,
                                          "meteors/meteor.png");
 
-const alien: FixedObject = fixedObject("alien", 150, [-4, 70], 90, 
+const alien: FixedObject = fixedObject("alien", 11, [-4, 60], 90, 
                                        "alien/alien.png");
 
-const mars: FixedObject = fixedObject("mars", 60, [47, 6], 0,
+const mars: FixedObject = fixedObject("mars", 4, [47, 6], 0,
                                       "planets/mars.png");
 
-const mercury: FixedObject = fixedObject("mercury", 45, [85, 31], 0,
+const mercury: FixedObject = fixedObject("mercury", 3, [85, 31], 0,
                                          "planets/mercury.png");
 
-const neptune: FixedObject = fixedObject("neptune", 70, [12, 42], 0,
+const neptune: FixedObject = fixedObject("neptune", 5, [12, 42], 0,
                                          "planets/neptune.png");
 
-const saturn: FixedObject = fixedObject("saturn", 70, [87, 4], 0,
+const saturn: FixedObject = fixedObject("saturn", 4.5, [87, 4], 0,
                                         "planets/saturn.png");
 
-const uranus: FixedObject = fixedObject("uranus", 60, [40, 56], 0,
+const uranus: FixedObject = fixedObject("uranus", 4, [40, 56], 0,
                                         "planets/uranus.png");
 
-const venus: FixedObject = fixedObject("venus", 85, [21, 73], 0,
+const venus: FixedObject = fixedObject("venus", 6.5, [21, 68], 0,
                                        "planets/venus.png");
 
 export const fixedObjects: Array<FixedObject> = [
@@ -155,13 +155,9 @@ const fluidObject = (name: string, size: number,
     });
 }
 
-const astronaut: FluidObject = fluidObject("astronaut", 140, [49, 34], 
+export const astronaut: FluidObject = fluidObject("astronaut", 140, [49, 34], 
                                            [39, 51], [9, 48], 0, 
                                            "astronaut/astronaut.png", );
 
-const earth: FluidObject = fluidObject("earth", 100, [62, 41], [61, 58],
+export const earth: FluidObject = fluidObject("earth", 100, [62, 41], [61, 58],
                                        [43, 55], 0, "earth/earth.png");
-
-export const fluidObjects: Array<FluidObject> = [
-    astronaut, earth
-]

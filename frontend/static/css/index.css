@@ -28,8 +28,10 @@ html, body {
 	color: white;
 	background-image: linear-gradient(rgba(14, 39, 77, 1), black);
 	overflow: hidden;
+	min-height: 650px;
 }
 
 .backgroundCover {
 	position: relative;
+	min-height: 650px;
 }

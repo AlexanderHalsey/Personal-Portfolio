@@ -2,9 +2,9 @@ import * as React from 'react';
 import { rocketShip } from './spaceObjects';
 import useWindowDimensions from './useWindowDimensions';
 
-const rocketSpeedDelay = 150; //ms
-const startDelay = 2000; //ms
-const repeatDelay = 6000; //ms
+const rocketSpeedDelay = 150; // ms
+const startDelay = 1000; // ms
+const repeatDelay = 6000; // ms
 
 type Coords = [number, number];
 
@@ -19,13 +19,14 @@ const RocketShip = () => {
 
   React.useEffect(() => {
     const rocket = document.getElementsByClassName("rocket")[0] as HTMLElement;
-    async function trajectory(): Promise<any> {
+    async function rocketTrajectory(): Promise<any> {
       // if rocket is at bottom of screen waiting to start
       // then wait, then add smooth frame transition values
       if (coords[1] == 100) {
-        await new Promise(resolve => setTimeout(resolve, startDelay))
+        await new Promise(resolve => setTimeout(resolve, startDelay));
         rocket.style.transition = 'top ' + rocketSpeedDelay + 'ms, left ' 
           + rocketSpeedDelay + 'ms';
+        rocket.style.transitionTimingFunction = 'linear';
       };
 
       // if rocket is in flight, give it new coords for width / height
@@ -40,7 +41,7 @@ const RocketShip = () => {
         setCoords(rocketShip.coords);
       };
     }
-    trajectory();
+    rocketTrajectory();
   }, [coords]);
 
   return (
@@ -49,13 +50,11 @@ const RocketShip = () => {
       className="rocket"
       src={rocketShip.file}
       style={{
-        width: Math.floor(rocketShip.size * width / 1366),
+        width: rocketShip.size.toString() + "%",
         position: 'absolute',
         left: coords[0].toString() + "%",
-        top: Math.floor(coords[1] / 100 * (625-75)),
+        top: coords[1].toString() + "%",
         transform: 'rotate(' + rocketShip.orientation + 'deg)',
-        transitionTimingFunction: 'linear',
-
       }}
     />
   );
